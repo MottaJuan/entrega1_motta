@@ -1,7 +1,11 @@
+from typing import Dict
 from django.http import HttpResponse
 from django.shortcuts import render, HttpResponse
 from django.template import Template, Context, loader
 from app_1.models import Jugador, Entrenador, Equipo
+from app_1.forms import EquipoFormulario
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+
 
 def probar(request):
     queryset=Equipo.objects.all()
@@ -26,3 +30,16 @@ def entrenadores(request):
 def equipos(request):
 
     return render(request,'app_1/equipos.html')
+
+def crear_equipo(request):
+    if request.method == 'POST':
+        formulario = EquipoFormulario(request.POST)
+
+        if formulario.is_valid():
+            data = formulario.cleaned_data
+            equipo =  Equipo(nombre=data['nombre'], categoria=data['categoria'], liga=data['liga'])
+            equipo.save()
+            return render(request, "app_1/inicio.html", {"exitoso": True})
+    else:  # GET
+        formulario = EquipoFormulario()  # Formulario vacio para construir el html
+    return render(request, "app_1/form_equipo.html", {"formulario": formulario})

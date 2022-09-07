@@ -7,7 +7,7 @@ urlpatterns = [
     #path('entregables/', views.entregables, name="entregables"),
     # URLs de Equios
     path('equipos/', views.equipos, name="equipos"),
-
+    path('crear-equipo/', views.crear_equipo, name="crear_equipo"),
     # URLs de Entrenadores
     path('entrenadores/', views.entrenadores, name="entrenadores"),
   
