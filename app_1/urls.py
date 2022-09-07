@@ -8,6 +8,8 @@ urlpatterns = [
     # URLs de Equios
     path('equipos/', views.equipos, name="equipos"),
     path('crear-equipo/', views.crear_equipo, name="crear_equipo"),
+    path('busqueda-equipo-form/',views.busqueda_equipos, name="busqueda_equipo_form"),
+    path('busqueda-equipo/',views.buscar_equipos, name="busqueda_equipo"),
     # URLs de Entrenadores
     path('entrenadores/', views.entrenadores, name="entrenadores"),
   

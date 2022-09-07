@@ -1,16 +1,9 @@
 {% extends "app_1/plantilla_base.html" %}
 {% load static %}
 {% block contenido_base %}
-<h1>EQUIPOS</h1>
-<br>
-<a href="{% url 'crear_equipo' %}">Crear equipo</a>
-<br>
-<a href="{% url 'busqueda_equipo_form' %}">Buscar equipo</a>
-<br>
-<br>
 
-<h3>Todos los equipos:</h3>
-
+<h3>Equipos fitrados:</h3>
+{% if equipos %}
 <table class="coder-table">
     <tbody>
       <tr>
@@ -33,4 +26,7 @@
       {% endfor %}
     </tbody>
 </table>
+{% else %}
+<h4>NO hay equipos con esa busqueda</h4>
+{% endif %}
 {% endblock contenido_base %}

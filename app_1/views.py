@@ -28,8 +28,8 @@ def entrenadores(request):
     return render(request,'app_1/entrenadores.html')
 
 def equipos(request):
-
-    return render(request,'app_1/equipos.html')
+    equipos=Equipo.objects.all()
+    return render(request,'app_1/equipos.html',{'equipos':equipos})
 
 def crear_equipo(request):
     if request.method == 'POST':
@@ -43,3 +43,15 @@ def crear_equipo(request):
     else:  # GET
         formulario = EquipoFormulario()  # Formulario vacio para construir el html
     return render(request, "app_1/form_equipo.html", {"formulario": formulario})
+
+
+def busqueda_equipos(request):
+    return render(request, "app_1/form_busqueda_equipo.html")
+
+def buscar_equipos(request):
+    if request.GET["nombre"]:
+        nombre=request.GET["nombre"]
+        equipos=Equipo.objects.filter(nombre__icontains=nombre)
+        return render(request,'app_1/equipos.html',{'equipos':equipos})
+    else:
+        return render(request,'app_1/equipos.html',{'equipos':[]})
