@@ -8,6 +8,8 @@ class Jugador(models.Model):
     fecha_nacimiento=models.DateField()
     num_camiseta=models.IntegerField()
     email = models.EmailField()
+    def __str__(self):
+        return f'{self.apellido}, {self.nombre}'
 
 
 class Entrenador(models.Model):
@@ -16,7 +18,13 @@ class Entrenador(models.Model):
     fecha_nacimiento=models.DateField()
     email = models.EmailField()
 
+    def __str__(self):
+        return f'{self.apellido}, {self.nombre}'
+
 class Equipo(models.Model):
     nombre=models.CharField(max_length=128)
     categoria=models.CharField(max_length=128)
     liga=models.CharField(max_length=128)
+
+    def __str__(self) -> str:
+        return f'{self.nombre}'
