@@ -12,7 +12,8 @@ urlpatterns = [
     path('busqueda-equipo/',views.buscar_equipos, name="busqueda_equipo"),
     # URLs de Entrenadores
     path('entrenadores/', views.entrenadores, name="entrenadores"),
-  
+    path('crear-entrenador/', views.crear_entrenador, name="crear_entrenador"),
     # URLs de Jugadores
-     path('jugadores/', views.jugadores, name="jugadores"),
+    path('jugadores/', views.jugadores, name="jugadores"),
+    path('crear-jugador/', views.crear_jugador, name="crear_jugador"),
 ]
